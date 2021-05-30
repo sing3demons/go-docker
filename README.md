@@ -23,7 +23,7 @@ ENTRYPOINT CompileDaemon --build="go build main.go" --command=./main
 ```
 MYSQL_ROOT_PASSWORD=root
 DB_USER=user
-DB_PASSWORD=Password@123
+DB_PASSWORD=*******
 DB_HOST=db
 DB_PORT=3306
 DB_NAME=golang
@@ -74,7 +74,7 @@ services:
     web:
         build: .
         ports:
-          - "8080:8080"
+          - "8080:${PORT}"
         volumes:
           - ".:/app"
         depends_on:
@@ -89,7 +89,7 @@ PORT=8080
 POSTGRES_PASSWOR=123456
 DB_HOST=localhost
 DB_USER=postgres
-DB_PASSWORD=123456
+DB_PASSWORD=********
 DB_NAME=articles
 ```
 
