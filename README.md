@@ -86,11 +86,10 @@ services:
 .env 
 ```
 PORT=8080
-POSTGRES_PASSWOR=123456
-DB_HOST=localhost
-DB_USER=postgres
-DB_PASSWORD=********
-DB_NAME=articles
+DB_HOST=db
+DB_USER=dnz-dev
+DB_PASSWORD=dnz-dev
+DB_NAME=dnz-dev
 ```
 
 run command 
