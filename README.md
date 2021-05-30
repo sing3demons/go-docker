@@ -58,4 +58,7 @@ services:
       - "db:database"
 ```
 
-run command $ docker-compose up --build
+run command 
+``` 
+docker-compose up --build 
+```
