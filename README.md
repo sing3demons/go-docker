@@ -1,6 +1,9 @@
 
 # Dockerfile
 ```
+Dockerfile
+```
+```
 FROM golang:alpine
 
 RUN mkdir /app
@@ -20,6 +23,10 @@ EXPOSE 8000
 ENTRYPOINT CompileDaemon --build="go build main.go" --command=./main
 ```
 # .env
+
+```
+.env
+```
 ```
 MYSQL_ROOT_PASSWORD=root
 DB_USER=user
@@ -34,6 +41,9 @@ PORT=8080
 
 # docker-compose.yml mysql
 
+```
+docker-compose.yml
+```
 ```yml 
 version: '3'
 services:
@@ -59,6 +69,9 @@ services:
 ```
 
 # docker-compose.yml postgres
+```
+docker-compose.yml
+```
 
 ```yml 
 version: '3.1'
@@ -83,7 +96,11 @@ services:
           - "db:database"
 ```
 
-.env 
+# .env 
+
+```
+.env
+```
 ```
 PORT=8080
 DB_HOST=db
