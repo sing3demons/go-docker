@@ -32,7 +32,7 @@ ENVIRONMENT=local
 PORT=8080
 ```
 
-# docker-compose.yml 
+# docker-compose.yml mysql
 
 ```yml 
 version: '3'
@@ -56,6 +56,41 @@ services:
       - db
     links:
       - "db:database"
+```
+
+# docker-compose.yml postgres
+
+```yml 
+version: '3.1'
+services:
+    db:
+        image: postgres
+        environment:
+            POSTGRES_DB: ${DB_NAME}
+            POSTGRES_USER: ${DB_USER}
+            POSTGRES_PASSWORD: ${DB_PASSWORD}
+        ports:
+            - 6000:5432
+    web:
+        build: .
+        ports:
+          - "8080:8080"
+        volumes:
+          - ".:/app"
+        depends_on:
+          - db
+        links:
+          - "db:database"
+```
+
+.env 
+```
+PORT=8080
+POSTGRES_PASSWOR=123456
+DB_HOST=localhost
+DB_USER=postgres
+DB_PASSWORD=123456
+DB_NAME=articles
 ```
 
 run command 
