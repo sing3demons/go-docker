@@ -29,6 +29,7 @@ DB_PORT=3306
 DB_NAME=golang
 SERVER_PORT=8000
 ENVIRONMENT=local
+PORT=8080
 ```
 
 # docker-compose.yml 
@@ -48,7 +49,7 @@ services:
   web:
     build: .
     ports:
-      - "8000:8000"
+      - "8000:${PORT}"
     volumes:
       - ".:/app"
     depends_on:
