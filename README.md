@@ -18,7 +18,7 @@ ADD . .
 
 RUN go get github.com/githubnemo/CompileDaemon
 
-EXPOSE 8000
+EXPOSE ${PORT}
 
 ENTRYPOINT CompileDaemon --build="go build main.go" --command=./main
 ```
@@ -57,6 +57,7 @@ services:
     image: mysql/mysql-server:5.7
     ports:
       - "3305:3306"
+    restart: always
     environment:
       - "MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}"
       - "MYSQL_USER=${DB_USER}"
@@ -68,6 +69,7 @@ services:
       - "8000:${PORT}"
     volumes:
       - ".:/app"
+    restart: always
     depends_on:
       - db
     links:
@@ -90,12 +92,14 @@ services:
             POSTGRES_PASSWORD: ${DB_PASSWORD}
         ports:
             - 6000:5432
+        restart: always
     web:
         build: .
         ports:
           - "8080:${PORT}"
         volumes:
           - ".:/app"
+        restart: always
         depends_on:
           - db
         links:
