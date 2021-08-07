@@ -106,6 +106,18 @@ services:
           - "db:database"
 ```
 
+
+```
+version: '3.5'
+
+services:
+    redis:
+        container_name: redis
+        image: redis:6
+        ports: 
+            - 6379:6379
+```
+
 # .env 
 
 ```
