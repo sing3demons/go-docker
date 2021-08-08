@@ -45,7 +45,7 @@ ENVIRONMENT=local
 PORT=8080
 ```
 
-# docker-compose.yml mysql
+# mysql
 
 ```
 docker-compose.yml
@@ -76,7 +76,7 @@ services:
       - "db:database"
 ```
 
-# docker-compose.yml postgres
+#  postgres
 ```
 docker-compose.yml
 ```
@@ -106,7 +106,7 @@ services:
           - "db:database"
 ```
 
-#mongo
+# mongo
 ```
 version: '3.1'
 
@@ -125,7 +125,7 @@ services:
 ```
 
 
-#redis
+# redis
 ```
 version: '3.5'
 
