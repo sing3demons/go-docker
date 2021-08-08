@@ -106,7 +106,26 @@ services:
           - "db:database"
 ```
 
+#mongo
+```
+version: '3.1'
 
+services:
+
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports: 
+        - 27017:27017
+    volumes: 
+        - .gomongodbdata:/data/db
+```
+
+
+#redis
 ```
 version: '3.5'
 
