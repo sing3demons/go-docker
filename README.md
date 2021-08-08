@@ -114,6 +114,7 @@ services:
 
   mongo:
     image: mongo
+    container_name: "mongo"
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
@@ -122,6 +123,10 @@ services:
         - 27017:27017
     volumes: 
         - .gomongodbdata:/data/db
+```
+
+```
+"mongodb://root:example@localhost:27017"
 ```
 
 
