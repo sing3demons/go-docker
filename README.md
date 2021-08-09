@@ -51,12 +51,10 @@ PORT=8080
 docker-compose.yml
 ```
 ```yml 
-version: '3'
+version: '3.9'
 services:
   db:
-    image: mysql/mysql-server:5.7
-    volumes:
-      - db_data:/var/lib/mysql
+    image: mysql:5.7.22
     ports:
       - "3305:3306"
     restart: always
@@ -64,7 +62,9 @@ services:
       - "MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}"
       - "MYSQL_USER=${DB_USER}"
       - "MYSQL_PASSWORD=${DB_PASSWORD}"
-      - "MYSQL_DATABASE=${DB_NAME}"   
+      - "MYSQL_DATABASE=${DB_NAME}" 
+    volumes:
+     - .db_data:/var/lib/mysql
   web:
     build: .
     ports:
@@ -84,16 +84,18 @@ docker-compose.yml
 ```
 
 ```yml 
-version: '3.1'
+version: '3.8'
 services:
     db:
         image: postgres
         environment:
-            POSTGRES_DB: ${DB_NAME}
-            POSTGRES_USER: ${DB_USER}
-            POSTGRES_PASSWORD: ${DB_PASSWORD}
+          - POSTGRES_DB=${DB_NAME}
+          - POSTGRES_USER=${DB_USER}
+          - POSTGRES_PASSWORD=${DB_PASSWORD}
         ports:
-            - 6000:5432
+          - 5432:5432
+        volumes:
+          - ./db_data:/var/lib/postgresql/data
         restart: always
     web:
         build: .
