@@ -55,6 +55,8 @@ version: '3'
 services:
   db:
     image: mysql/mysql-server:5.7
+    volumes:
+      - db_data:/var/lib/mysql
     ports:
       - "3305:3306"
     restart: always
