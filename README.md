@@ -140,11 +140,26 @@ version: '3.5'
 
 services:
     redis:
-        container_name: redis
-        image: redis:6
-        ports: 
-            - 6379:6379
+    container_name: "redis"
+    image: redis:alpine
+     # Specify the redis.conf file to use and add a password.
+    command: redis-server /usr/local/etc/redis/redis.conf --requirepass passw0rd
+    ports:
+      - 6379:6379
+     # map the volumes to that redis has the custom conf file from this project.
+    volumes:
+      - $PWD/redis.conf:/usr/local/etc/redis/redis.conf
 ```
+```
+redis.conf
+```
+redis.conf > maxmemory 41943040
+```
+# Use the official redis.conf file supplied by redis.
+# As a test use a simple config for testing.
+maxmemory 41943040
+```
+
 
 # .env 
 
