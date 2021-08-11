@@ -160,6 +160,44 @@ redis.conf > maxmemory 41943040
 maxmemory 41943040
 ```
 
+# nginx
+```
+nginx:
+    image: nginx:latest
+    container_name: webserver
+    restart: unless-stopped
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - webapi #connect web 
+```
+
+# nginx.conf
+
+```
+user nginx;
+# can handle 1000 concurrent connections
+events {
+    worker_connections 1024;
+}
+# forwards http requests
+http {
+        # http server
+        server {
+              # listens the requests coming on port 80
+              listen 80;
+              access_log  off;
+              # / means all the requests have to be forwarded to api service
+              location / {
+                # resolves the IP of api using Docker internal DNS
+                proxy_pass http://webapi:8080;
+              }
+        }
+}
+```
+
 
 # .env 
 
